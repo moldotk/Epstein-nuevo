@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videos Epstein</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#111;
+color:white;
+text-align:center;
+}
+
+.botones{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+padding:15px;
+}
+
+button{
+padding:15px;
+font-size:16px;
+border:none;
+border-radius:8px;
+background:#333;
+color:white;
+}
+
+#contenido{
+width:100%;
+padding:10px;
+box-sizing:border-box;
+}
+
+video,img{
+width:100%;
+max-width:100%;
+border-radius:10px;
+}
+
+#scream{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+#scream img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+@keyframes temblar{
+0%{transform:translate(0,0)}
+20%{transform:translate(-10px,5px)}
+40%{transform:translate(10px,-5px)}
+60%{transform:translate(-10px,-5px)}
+80%{transform:translate(10px,5px)}
+100%{transform:translate(0,0)}
+}
+
+.temblar{
+animation:temblar 0.08s infinite;
+}
+
+</style>
+</head>
+<body id="body">
+
+<div class="botones">
+
+<button onclick="activarTodo();mostrar('v1')">Video Epstein 1</button>
+<button onclick="activarTodo();mostrar('v2')">Video Epstein 2</button>
+<button onclick="activarTodo();mostrar('i1')">Imagen Epstein 1</button>
+<button onclick="activarTodo();mostrar('i2')">Imagen Epstein 2</button>
+
+</div>
+
+<div id="contenido"></div>
+
+<div id="scream">
+<img src="imagenscream.jpg">
+</div>
+
+<audio id="screamsound" src="scream.mp3" preload="auto"></audio>
+
+<script>
+
+let audioActivado=false;
+
+function activarTodo(){
+
+activarAudio();
+pantallaCompleta();
+
+}
+
+function activarAudio(){
+
+if(!audioActivado){
+
+let sonido=document.getElementById("screamsound");
+
+sonido.play().then(()=>{
+sonido.pause();
+sonido.currentTime=0;
+});
+
+audioActivado=true;
+
+}
+
+}
+
+function pantallaCompleta(){
+
+let elem=document.documentElement;
+
+if(elem.requestFullscreen){
+elem.requestFullscreen();
+}
+
+}
+
+function mostrar(tipo){
+
+let cont=document.getElementById("contenido");
+
+if(tipo=="v1"){
+cont.innerHTML='<video src="video1.mp4" controls autoplay></video>';
+}
+
+if(tipo=="v2"){
+cont.innerHTML='<video src="video2.mp4" controls autoplay></video>';
+}
+
+if(tipo=="i1"){
+cont.innerHTML='<img src="imagen1.jpg">';
+}
+
+if(tipo=="i2"){
+cont.innerHTML='<img src="imagen2.jpg">';
+}
+
+}
+
+window.onload=function(){
+
+setTimeout(function(){
+
+let scream=document.getElementById("scream");
+let sonido=document.getElementById("screamsound");
+let body=document.getElementById("body");
+
+scream.style.display="flex";
+
+sonido.volume=1;
+sonido.play();
+
+if(navigator.vibrate){
+navigator.vibrate([300,100,300,100,500]);
+}
+
+body.classList.add("temblar");
+
+setTimeout(function(){
+
+scream.style.display="none";
+sonido.pause();
+sonido.currentTime=0;
+body.classList.remove("temblar");
+
+},3000);
+
+},13000);
+
+}
+
+</script>
+
+</body>
+</html>
