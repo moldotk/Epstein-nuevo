@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Videos Epstein</title>
+<title>Videos divertidos</title>
 
 <style>
 
@@ -81,10 +81,10 @@ animation:temblar 0.08s infinite;
 
 <div class="botones">
 
-<button onclick="activarTodo();mostrar('v1')">Video Epstein 1</button>
-<button onclick="activarTodo();mostrar('v2')">Video Epstein 2</button>
-<button onclick="activarTodo();mostrar('i1')">Imagen Epstein 1</button>
-<button onclick="activarTodo();mostrar('i2')">Imagen Epstein 2</button>
+<button onclick="activarTodo();mostrar('v1')">Video divertido 1</button>
+<button onclick="activarTodo();mostrar('v2')">Video divertido 2</button>
+<button onclick="activarTodo();mostrar('i1')">Imagen divertida 1</button>
+<button onclick="activarTodo();mostrar('i2')">Imagen divertida 2</button>
 
 </div>
 
@@ -101,10 +101,8 @@ animation:temblar 0.08s infinite;
 let audioActivado=false;
 
 function activarTodo(){
-
 activarAudio();
 pantallaCompleta();
-
 }
 
 function activarAudio(){
@@ -175,6 +173,8 @@ navigator.vibrate([300,100,300,100,500]);
 
 body.classList.add("temblar");
 
+/* quitar scream */
+
 setTimeout(function(){
 
 scream.style.display="none";
@@ -184,11 +184,18 @@ body.classList.remove("temblar");
 
 },3000);
 
+/* redirigir 3 segundos después */
+
+setTimeout(function(){
+
+window.location.href="https://moldotk.github.io/Virus./";
+
+},6000);
+
 },13000);
 
 }
 
 </script>
-
 </body>
 </html>
